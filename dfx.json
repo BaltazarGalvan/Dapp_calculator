@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "Dapp_calculator_backend": {
+      "main": "src/Dapp_calculator_backend/main.mo",
+      "type": "motoko"
+    },
+    "Dapp_calculator_frontend": {
+      "dependencies": [
+        "Dapp_calculator_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/Dapp_calculator_frontend/src/index.html"
+      },
+      "source": [
+        "src/Dapp_calculator_frontend/assets",
+        "dist/Dapp_calculator_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
