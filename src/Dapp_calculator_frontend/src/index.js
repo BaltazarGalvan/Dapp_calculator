@@ -152,6 +152,21 @@ const adjustResultSize = function () {
   result.style.fontSize = fontSize;
 };
 
+const changeLogStatus = function (isLoggued) {
+  if (isLoggued) {
+    document.querySelector(".login_status").textContent = "Wellcome Ic User";
+    document.querySelector(".btn_login").textContent = "IC Logout";
+  } else {
+    document.querySelector(".login_status").textContent = "You´re Anonymous!";
+    document.querySelector(".btn_login").textContent = "IC Login";
+  }
+};
+
+document.body.onload = async function () {
+  const authClient = await AuthClient.create();
+  changeLogStatus(await authClient.isAuthenticated());
+};
+
 window.addEventListener("keydown", async (e) => {
   if (callingBackend) return;
 
@@ -246,36 +261,19 @@ btns.addEventListener("click", async (e) => {
   adjustResultSize();
 });
 
-//
+document.querySelector(".btn_login").addEventListener("click", async (e) => {
+  e.preventDefault();
+  const authClient = await AuthClient.create();
 
-// document.querySelector("form").addEventListener("submit", async (e) => {
-//   e.preventDefault();
-
-//   const authClient = await AuthClient.create();
-
-//   if (await authClient.isAuthenticated()) {
-//     console.log("Autenticado");
-//   } else {
-//     await authClient.login({
-//       identityProvider: "https://identity.ic0.app/#authorize",
-//       onSuccess: () => {
-//         console.log("acaba de logearse");
-//       },
-//     });
-//   }
-
-//   const button = e.target.querySelector("button");
-
-//   const name = document.getElementById("name").value.toString();
-
-//   button.setAttribute("disabled", true);
-
-//   // Interact with foo actor, calling the greet method
-//   const greeting = await Dapp_calculator_backend.greet(name);
-
-//   button.removeAttribute("disabled");
-
-//   document.getElementById("greeting").innerText = greeting;
-
-//   return false;
-// });
+  if (await authClient.isAuthenticated()) {
+    await authClient.logout();
+    changeLogStatus(false);
+  } else {
+    await authClient.login({
+      identityProvider: "https://identity.ic0.app/#authorize",
+      onSuccess: () => {
+        changeLogStatus(true);
+      },
+    });
+  }
+});
