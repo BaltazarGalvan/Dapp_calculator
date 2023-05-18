@@ -2,23 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Dapp_calculator</title>
-    <base href="/" />
-    <link rel="icon" href="favicon.ico" />
-    <link type="text/css" rel="stylesheet" href="main.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
   </head>
-  <body>
-    <main>
-      <img src="logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#">
-        <label for="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting"></section>
-    </main>
+  <body style="background-image: url('./IC.jpg')">
+    <div class="loader">
+      <img class="motoko" src="./motoko.png" alt="motoko Image" />
+    </div>
+
+    <div class="main-container">
+      <div class="cal-container">
+        <div class="result-container">
+          <h1 id="result"></h1>
+        </div>
+        <div class="btns">
+          <button class="btn top" id="clear" value="Clear">AC</button>
+          <button class="btn top" id="negativo" value="negativo">+/-</button>
+          <!-- <button class="btn top" id="porcentaje" value="%">%</button> -->
+          <button class="btn aritmetic_operator left" id="div" value="/">
+            /
+          </button>
+          <button class="btn number" id="seven" value="7">7</button>
+          <button class="btn number" id="eight" value="8">8</button>
+          <button class="btn number" id="nine" value="9">9</button>
+          <button class="btn aritmetic_operator left" id="multiply" value="*">
+            *
+          </button>
+          <button class="btn number" id="four" value="4">4</button>
+          <button class="btn number" id="five" value="5">5</button>
+          <button class="btn number" id="six" value="6">6</button>
+          <button class="btn aritmetic_operator left" id="minus" value="-">
+            -
+          </button>
+          <button class="btn number" id="one" value="1">1</button>
+          <button class="btn number" id="two" value="2">2</button>
+          <button class="btn number" id="three" value="3">3</button>
+          <button class="btn aritmetic_operator left" id="plus" value="+">
+            +
+          </button>
+          <button class="btn cero number" id="cero" value="0">0</button>
+          <button class="btn number point" id="point" value=".">.</button>
+          <button class="btn iqual left" id="iqual" value="=">=</button>
+        </div>
+      </div>
+      <div class="powered">
+        <span>Build for the Internet Computer on Motoko</span>
+      </div>
+    </div>
   </body>
 </html>
